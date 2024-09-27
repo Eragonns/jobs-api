@@ -1,7 +1,7 @@
 import { UnauthenticatedError } from "../errors/index.js";
 import jwt from "jsonwebtoken";
 
-const authenticateUser = (req, res, next) => {
+const authenticateUser = (req, _res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1] || null;
     if (!token) {
@@ -10,7 +10,7 @@ const authenticateUser = (req, res, next) => {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     const userId = decodedToken._id;
     req.auth = {
-      userId: userId
+      userId: userId,
     };
     next();
   } catch (error) {
