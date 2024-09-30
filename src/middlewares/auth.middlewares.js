@@ -1,7 +1,7 @@
 import { UnauthenticatedError } from "../errors/index.js";
 import jwt from "jsonwebtoken";
 
-const authenticateUser = (req, res, next) => {
+const authenticateUser = (req, _res, next) => {
   try {
     console.log("hedears: ", req.headers);
     const token = req.headers.authorization.split(" ")[1] || null;
