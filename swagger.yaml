@@ -1,0 +1,136 @@
+openapi: 3.0.0
+info:
+  title: jobs-api
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/api/v1
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: auth
+  - name: jobs
+paths:
+  /auth/register:
+    post:
+      tags:
+        - auth
+      summary: Register User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: john
+                email: john1@gmail.com
+                password: secret
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/login:
+    post:
+      tags:
+        - auth
+      summary: Login User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: john@gmail.com
+                password: secret
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /jobs/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The Job Id
+    get:
+      tags:
+        - jobs
+      summary: Get Single Job
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - jobs
+      summary: Update Job
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company: aftral
+                position: chose
+                status: en attente
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - jobs
+      summary: Delete Job
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /jobs:
+    post:
+      tags:
+        - jobs
+      summary: create job
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company: sofip
+                position: chose
+                status: en attente
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - jobs
+      summary: All Jobs
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
