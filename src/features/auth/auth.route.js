@@ -1,18 +1,18 @@
 import express from "express";
-import * as authController from "./auth.controllers.js";
+const router = express.Router();
 import validate from "../../middlewares/validation.middlewares.js";
 import { LoginUserSchema, RegisterUserSchema } from "../users/user.schema.js";
-import authenticateUser from "../../middlewares/auth.middlewares.js";
+import * as authController from "./auth.controllers.js";
 
-const router = express.Router();
-
-router.post("/register", validate(RegisterUserSchema), authController.register);
-router.post("/login", validate(LoginUserSchema), authController.login);
-
-router.get(
-  "/dashboard/:id",
-  validate(authenticateUser),
-  authController.dashboard
+router.post(
+  "/register",
+  validate({ bodySchema: RegisterUserSchema }),
+  authController.register
+);
+router.post(
+  "/login",
+  validate({ bodySchema: LoginUserSchema }),
+  authController.login
 );
 
 export default router;

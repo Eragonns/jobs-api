@@ -5,13 +5,12 @@ const errorHandler = (err, _req, res, _next) => {
 
   const msg =
     err.message || "Une erreur s'est produite, veuillez réessayer plus tard";
-
   const statusCode = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
 
   if (err.code === 11000) {
     return res
       .status(StatusCodes.CONFLICT)
-      .json({ msg: "l'adresse email existe deja" });
+      .json({ msg: "L'adresse email existe déjà" });
   }
 
   res.status(statusCode).json({ msg });

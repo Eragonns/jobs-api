@@ -7,14 +7,12 @@ const connectDB = () => {
     console.error(error.message);
     process.exit(1);
   }
+
+  const dbConnection = mongoose.connection;
+
+  dbConnection.once("open", () => console.log("Database connected"));
+
+  dbConnection.on("error", (err) => console.log(`Connection error: ${err}`));
 };
-
-const dbConnection = mongoose.connection;
-
-dbConnection.once("open", () => console.log("Database connected"));
-
-dbConnection.on("error", (err) => {
-  console.log(`connection error: ${err}`);
-});
 
 export default connectDB;

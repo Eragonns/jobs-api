@@ -5,22 +5,22 @@ import jwt from "jsonwebtoken";
 const UserSchema = new Schema({
   name: {
     type: String,
-    required: [true, "veuillez fournir un nom"],
+    required: [true, "Veuillez fournir un nom"],
     maxlength: 50,
     minlength: 3
   },
   email: {
     type: String,
-    required: [true, "veuillez fournir un email"],
+    required: [true, "Veuillez founir un email"],
     unique: true,
     match: [
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      "veuillez fournir un email valide"
+      "Veuillez fournir un email valide"
     ]
   },
   password: {
     type: String,
-    required: [true, "veuillez fournir un mot de passe"],
+    required: [true, "Veuillez fournir un mot de passe"],
     minlength: 6
   }
 });

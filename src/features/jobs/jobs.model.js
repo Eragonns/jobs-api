@@ -1,5 +1,5 @@
-import { model, Schema } from "mongoose";
-import { JOB_STATUS } from "../../utils/constants";
+import mongoose, { model, Schema } from "mongoose";
+import { JOB_STATUS } from "../../utils/constants.js";
 
 const JobSchema = new Schema(
   {
@@ -27,4 +27,4 @@ const JobSchema = new Schema(
   { timestamps: true }
 );
 
-export default model("job", JobSchema);
+export default model("Job", JobSchema);

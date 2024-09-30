@@ -3,6 +3,7 @@ import { z } from "zod";
 const RegisterUserSchema = z.object({
   name: z
     .string()
+    .trim()
     .min(3, { message: "Doit avoir au minimum 3 caractères" })
     .max(50, { message: "Doit avoir au maximum 50 caractères" }),
   email: z.string().email({ message: "Email invalide" }),
@@ -17,4 +18,4 @@ const LoginUserSchema = z.object({
   password: z.string().trim()
 });
 
-export { RegisterUserSchema, LoginUserSchema };
+export { LoginUserSchema, RegisterUserSchema };
