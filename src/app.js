@@ -35,6 +35,7 @@ app.use(
 app.use(helmet());
 app.use(express.json());
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+app.set("trust proxy", 1);
 
 app.get("/", (_req, res) => {
   res
